@@ -1,22 +1,21 @@
 //Configuração dos pinos
 int PinA0 = A1;//PINO UTILIZADO PELO SENSOR DE GÁS MQ-2
 int buzzer = 8; //PINO UTILIZADO PELO BUZZER
-int leitura_sensor = 200;//DEFININDO UM VALOR LIMITE (NÍVEL DE GÁS NORMAL)
+int leitura_sensor = 400;//DEFININDO UM VALOR LIMITE (NÍVEL DE GÁS NORMAL)
 
-//Setup das portas utilizadas
+//Stup das portas utilizadas
 void setup(){
 pinMode(PinA0, INPUT); //DEFINE O PINO COMO ENTRADA
 pinMode(buzzer, OUTPUT); //DEFINE O PINO COMO SAÍDA
 Serial.begin(9600);//INICIALIZA A SERIAL
 }
-
-//Execução lógica
 void loop()
 {
 int valor_analogico = analogRead(PinA0); //VARIÁVEL RECEBE O VALOR LIDO NO PINO ANALÓGICO
 
+//Execução logica
 if (valor_analogico > leitura_sensor){//SE VALOR LIDO NO PINO ANALÓGICO FOR MAIOR QUE O VALOR LIMITE, FAZ
- tone(buzzer,1500);   
+ tone(buzzer,1900);   
   delay(500);
   noTone(buzzer);
   delay(500); //ATIVA O BUZZER E O MESMO EMITE O SINAL SONORO
@@ -25,3 +24,4 @@ noTone(buzzer);//BUZZER DESLIGADO
 }
 delay(100); //INTERVALO DE 100 MILISSEGUNDOS
 }
+
